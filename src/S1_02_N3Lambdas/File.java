@@ -1,4 +1,4 @@
-package S1_02_N3;
+package S1_02_N3Lambdas;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -41,7 +41,6 @@ public class File {
             fileWriter = new FileWriter("src/S1_02_N3/table.csv", true);
             pw = new PrintWriter(fileWriter);
             pw.write( "\n" + person.getName() + "," + person.getSurname() + "," + person.getNIF());
-
             pw.close();
             fileWriter.close();
         } catch (IOException e) {

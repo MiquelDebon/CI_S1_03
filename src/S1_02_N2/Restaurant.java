@@ -51,14 +51,28 @@ public class Restaurant implements Comparable<Restaurant>, Comparator<Restaurant
         return "Name: " + this.name + " Punctuation=" + this.punctuation;
     }
 
-    @Override
+//    @Override //Comparable TreeSet
+//    public int compareTo(Restaurant o) {
+//        return this.punctuation - o.getPunctuation();
+//    }
+    @Override //Comparable TreeSet
     public int compareTo(Restaurant o) {
-        return this.punctuation - o.getPunctuation();
+        int nameComparison = this.getName().compareToIgnoreCase(o.getName());
+        if (nameComparison != 0) {
+            return nameComparison;
+        } else {
+            return Integer.compare(this.getPunctuation(), o.getPunctuation());
+        }
     }
 
 
-    @Override
+    @Override //Comparator
     public int compare(Restaurant o1, Restaurant o2) {
-        return o1.getName().compareToIgnoreCase(o2.getName());
+        int nameComparison = o1.getName().compareToIgnoreCase(o2.getName());
+        if (nameComparison != 0) {
+            return nameComparison;
+        } else {
+            return Integer.compare(o1.getPunctuation(), o2.getPunctuation());
+        }
     }
 }

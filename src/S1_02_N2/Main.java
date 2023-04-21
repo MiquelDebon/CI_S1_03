@@ -4,52 +4,53 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Set<Restaurant> listRestaurant = new HashSet<Restaurant>();
+        //HashSet and Overriding equal()/hasCode() methods makes there are no exist double instance of what we want
+        Set<Restaurant> restaurantsSet = new HashSet<Restaurant>();
 
-        Restaurant restaurant01 = new Restaurant("Restaurant_01", 10);
-        Restaurant restaurant02 = new Restaurant("Restaurant_02", 10);
-        Restaurant restaurant03 = new Restaurant("Restaurant_01", 8);
-        Restaurant restaurant04 = new Restaurant("Restaurant_01", 10); //It's a copy of restaurant01
-        Restaurant restaurant05 = new Restaurant("Restaurant_09", 3);
+        restaurantsSet.add(new Restaurant("Restaurant_01", 10));
+        restaurantsSet.add(new Restaurant("Restaurant_02", 10));
+        restaurantsSet.add(new Restaurant("Restaurant_01", 8));
+        restaurantsSet.add(new Restaurant("Restaurant_01", 10)); //It's a copy of restaurant01
+        restaurantsSet.add(new Restaurant("Restaurant_09", 3));
+        printList("Ex1) Lista base HashSet - sin orden peero sin duplicados", restaurantsSet); //Sin orden es un HashSet
 
-        listRestaurant.add(restaurant01);
-        listRestaurant.add(restaurant02);
-        listRestaurant.add(restaurant03);
-        listRestaurant.add(restaurant04); //It's a copy of restaurant01
-        listRestaurant.add(restaurant05);
-
-        System.out.println(listRestaurant); //Sin orden es un HashSet
-
-
-
-
+        //Trying TreeSet
         /*  TreeSet   Ordenador por el metodo compareTo (I-Comparable)
-            Aslo only allow no duplicate by the current comparation = method CompareTo = punctuation     */
-        System.out.println("Colección ordenada por puntuación:");
-        TreeSet<Restaurant> listSetRestaurant = new TreeSet<>(listRestaurant); //
-        System.out.println(listSetRestaurant);
+            Aslo only allow no duplicate by the current comparation = method CompareTo = punctuation
+        TreeSet<Restaurant> listSetRestaurant = new TreeSet<>(restaurantsSet);
+        printList("Ex1) TreeSet ordenada por puntuación", listSetRestaurant);*/
 
-        /*  Tree ordenaor segur Comparator
-            Aslo only allow no duplicate by the current comparation = method Compare = Name       */
-        System.out.println("Colección ordenasa por nombre");
-        Comparator<Restaurant> comparator = new Restaurant(); //Este Comparator obtiene el metodo compare de la Clase Restaurante
-        TreeSet<Restaurant> listCompareRestaurant = new TreeSet<>(comparator);
-            listCompareRestaurant.add(restaurant01);
-            listCompareRestaurant.add(restaurant02);
-            listCompareRestaurant.add(restaurant03);
-            listCompareRestaurant.add(restaurant04);
-            listCompareRestaurant.add(restaurant05);
-        System.out.println(listCompareRestaurant);
 
-        List<Restaurant> restaurantsList = new ArrayList<Restaurant>(listRestaurant);
-        /* DOES NOT WORK - Quan ordena el segon, només ho ha amb segon criteri
-        Collections.sort(restaurantsList, new NameComparator());
-        Collections.sort(restaurantsList, new PunctuationComparator());
-        System.out.println(restaurantsList); */
+        //Exercise1 - by Name
+        Comparator<Restaurant> comparatorRestaurant = new Restaurant(); //Este Comparator obtiene el metodo compare de la Clase Restaurante
+        Comparator<Restaurant> comparatorNamePunct = new NamePunctuationComparator();
 
-        System.out.println("\nColección Lista ordenada por dos valores:");
+        //--------------------------------------------
+
+        //Exercise2-Option1 - by Name + Punctuation
+        TreeSet<Restaurant> restaurantsByNamePunctTreeSet = new TreeSet<Restaurant>();
+        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 10));
+        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_02", 10));
+        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 8));
+        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 10));
+        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_09", 3));
+        printList("Ex2-Option2) TreeSet ", restaurantsByNamePunctTreeSet);
+
+        //Exercise2-Option2 - by Name + Punctuation
+        List<Restaurant> restaurantsByNamePunctList = new ArrayList<Restaurant>(restaurantsSet);
+        Collections.sort(restaurantsByNamePunctList, comparatorRestaurant);
+        printList("Ex2-Option1) List ", restaurantsByNamePunctList);
+
+
+        //Exercise2-Option3 - by Name + Punctuation
+        List<Restaurant> restaurantsList = new ArrayList<Restaurant>(restaurantsSet);
         Collections.sort(restaurantsList, new NamePunctuationComparator());
-        System.out.println(restaurantsList);
+        printList("Ex2-Option3) List :", restaurantsList);
 
+    }
+
+    public static void printList(String mensaje, Collection<Restaurant> collection){
+        System.out.println("\n" + mensaje);
+        collection.forEach(System.out::println);
     }
 }
