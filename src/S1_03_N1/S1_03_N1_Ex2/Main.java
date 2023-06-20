@@ -11,14 +11,13 @@ public class Main {
 
         List<Integer> integerList1= new ArrayList<Integer>();
         List<Integer> integerList2 = new ArrayList<Integer>();
-        List<Integer> integerList3 = new ArrayList<Integer>();
 
         integerList1.add(1);
         integerList1.add(2);
         integerList1.add(3);
         integerList1.add(4);
 
-        // Generate an iterator. Parameter Index = the size of the first List.
+        // Generate an iterator.                           Parameter Index = the size of the first List.
         System.out.println("Iterator 1");
         ListIterator<Integer> i2 = integerList1.listIterator(integerList1.size());
         while(i2.hasPrevious()){

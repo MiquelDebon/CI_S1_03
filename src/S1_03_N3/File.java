@@ -14,7 +14,7 @@ public class File {
         String line = "";
 
         try {
-            fileReader = new FileReader("src/S1_02_N3/table.csv");
+            fileReader = new FileReader("src/S1_03_N3/table.csv");
             bf = new BufferedReader(fileReader);
             bf.readLine();  //Skip the title (First line)
 
@@ -38,7 +38,7 @@ public class File {
         PrintWriter pw ;
 
         try {
-            fileWriter = new FileWriter("src/S1_02_N3/table.csv", true);
+            fileWriter = new FileWriter("src/S1_03_N3/table.csv", true);
             pw = new PrintWriter(fileWriter);
             pw.write( "\n" + person.getName() + "," + person.getSurname() + "," + person.getNIF());
 

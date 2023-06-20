@@ -7,25 +7,23 @@ public class Restaurant implements Comparable<Restaurant>, Comparator<Restaurant
     private String name;
     private int punctuation;
 
-    public Restaurant(){};
 
+    public Restaurant(){};
     public Restaurant(String name, int punctuation) {
         this.name = name;
         this.punctuation = punctuation;
     }
 
+
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getPunctuation() {
         return this.punctuation;
     }
-
     public void setPunctuation(int punctuation) {
         this.punctuation = punctuation;
     }
@@ -39,7 +37,6 @@ public class Restaurant implements Comparable<Restaurant>, Comparator<Restaurant
         Restaurant that = (Restaurant) o;
         return this.punctuation == that.punctuation && this.name.equalsIgnoreCase(that.name);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.name, this.punctuation);
@@ -64,8 +61,6 @@ public class Restaurant implements Comparable<Restaurant>, Comparator<Restaurant
             return Integer.compare(this.getPunctuation(), o.getPunctuation());
         }
     }
-
-
     @Override //Comparator
     public int compare(Restaurant o1, Restaurant o2) {
         int nameComparison = o1.getName().compareToIgnoreCase(o2.getName());

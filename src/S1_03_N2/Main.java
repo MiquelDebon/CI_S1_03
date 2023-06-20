@@ -22,30 +22,30 @@ public class Main {
 
 
         //Exercise1 - by Name
-        Comparator<Restaurant> comparatorRestaurant = new Restaurant(); //Este Comparator obtiene el metodo compare de la Clase Restaurante
-        Comparator<Restaurant> comparatorNamePunct = new NamePunctuationComparator();
+        Comparator<Restaurant> comparatorName = new NameComparator();
+        Comparator<Restaurant> comparatorNamePunctRestaurant = new Restaurant(); //Este Comparator obtiene el metodo compare de la Clase Restaurante
 
         //--------------------------------------------
 
-        //Exercise2-Option1 - by Name + Punctuation
-        TreeSet<Restaurant> restaurantsByNamePunctTreeSet = new TreeSet<Restaurant>();
-        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 10));
-        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_02", 10));
-        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 8));
-        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_01", 10));
-        restaurantsByNamePunctTreeSet.add(new Restaurant("Restaurant_09", 3));
-        printList("Ex2-Option2) TreeSet ", restaurantsByNamePunctTreeSet);
+        //Exercise2-Option1 - by Name + Punctuation  -> El TreeSet obtiene el compareTo de Restaurante
+        TreeSet<Restaurant> rest_N2_Ex2_Opt1_TreeSet = new TreeSet<Restaurant>();
+        rest_N2_Ex2_Opt1_TreeSet.add(new Restaurant("Restaurant_01", 10));
+        rest_N2_Ex2_Opt1_TreeSet.add(new Restaurant("Restaurant_02", 10));
+        rest_N2_Ex2_Opt1_TreeSet.add(new Restaurant("Restaurant_01", 8));
+        rest_N2_Ex2_Opt1_TreeSet.add(new Restaurant("Restaurant_01", 10));
+        rest_N2_Ex2_Opt1_TreeSet.add(new Restaurant("Restaurant_09", 3));
+        printList("Ex2-Option1) TreeSet ", rest_N2_Ex2_Opt1_TreeSet);
 
         //Exercise2-Option2 - by Name + Punctuation
-        List<Restaurant> restaurantsByNamePunctList = new ArrayList<Restaurant>(restaurantsSet);
-        Collections.sort(restaurantsByNamePunctList, comparatorRestaurant);
-        printList("Ex2-Option1) List ", restaurantsByNamePunctList);
+        List<Restaurant> rest_N2_Ex2_Opt2 = new ArrayList<Restaurant>(restaurantsSet);
+        Collections.sort(rest_N2_Ex2_Opt2, comparatorNamePunctRestaurant);
+        printList("Ex2-Option2) List ", rest_N2_Ex2_Opt2);
 
 
         //Exercise2-Option3 - by Name + Punctuation
-        List<Restaurant> restaurantsList = new ArrayList<Restaurant>(restaurantsSet);
-        Collections.sort(restaurantsList, new NamePunctuationComparator());
-        printList("Ex2-Option3) List :", restaurantsList);
+        List<Restaurant> rest_N2_Ex2_Opt3 = new ArrayList<Restaurant>(restaurantsSet);
+        Collections.sort(rest_N2_Ex2_Opt3, new NamePunctuationComparator());
+        printList("Ex2-Option3) List :", rest_N2_Ex2_Opt3);
 
     }
 

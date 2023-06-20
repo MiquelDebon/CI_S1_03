@@ -46,17 +46,18 @@ public class Main {
 
         System.out.println();
 
-        System.out.println("I repeat on purpose the month 12 and insert it in a HashSet");
+        System.out.println("I repeat on purpose the month 5 and 12 and insert it in a HashSet");
         System.out.println("💡 Set no admiten diplicados y HasSets doesn't have order");
         monthList.add(m5);
         monthList.add(m12);
         HashSet<Month> monthListSet = new HashSet<>(monthList); //Convert ArrayList to an HashSet
 
+        //ForEach
+        System.out.println("Imprimo con Iterador");
         int n = 1;
         for(Month m : monthListSet){
             System.out.println("Unidad" + (n++) + " - " + m.getName());
         }
-
         System.out.println("\nImprimimos con un Iterator:");
 
         //Iterator method

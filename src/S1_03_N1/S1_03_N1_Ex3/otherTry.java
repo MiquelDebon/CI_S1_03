@@ -2,7 +2,6 @@ package S1_03_N1.S1_03_N1_Ex3;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 public class otherTry {
     public static void main(String[] args) {
